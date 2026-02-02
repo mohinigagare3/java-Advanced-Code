@@ -1,0 +1,71 @@
+import java.awt.*;
+import java.awt.event.*;
+
+public class WindowEventDemo extends Frame implements WindowListener {
+
+    Label label;
+
+    public WindowEventDemo() {
+        // Frame setup
+        setTitle("Window Events Demo");
+        setSize(400, 300);
+        setLayout(new FlowLayout());
+
+        // Add a label to show window events
+        label = new Label("Perform actions on the window (open, close, minimize, etc.)");
+        add(label);
+
+        // Add WindowListener to this frame
+        addWindowListener(this);
+
+        setVisible(true);
+    }
+
+    // WindowListener methods
+    @Override
+    public void windowOpened(WindowEvent e) {
+        label.setText("Window Opened");
+        System.out.println("Window Opened");
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        label.setText("Window Closing");
+        System.out.println("Window Closing");
+        dispose(); // Close the window
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+        label.setText("Window Closed");
+        System.out.println("Window Closed");
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+        label.setText("Window Minimized");
+        System.out.println("Window Minimized");
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+        label.setText("Window Restored");
+        System.out.println("Window Restored");
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+        label.setText("Window Activated");
+        System.out.println("Window Activated");
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+        label.setText("Window Deactivated");
+        System.out.println("Window Deactivated");
+    }
+
+    public static void main(String[] args) {
+        new WindowEventDemo();
+    }
+}
